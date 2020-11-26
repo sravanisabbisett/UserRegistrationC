@@ -11,6 +11,9 @@ namespace UserRegistration
             Console.WriteLine("Enter your Firstname");
             string firstName = Console.ReadLine();
             Console.WriteLine(validation.FirstName_Validation(firstName));
+            Console.WriteLine("Enter your Lastname");
+            string lastName = Console.ReadLine();
+            Console.WriteLine(validation.FirstName_Validation(lastName));
             Console.ReadKey();
         }
     }
