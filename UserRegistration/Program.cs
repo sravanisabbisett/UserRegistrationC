@@ -10,10 +10,10 @@ namespace UserRegistration
             Validation validation = new Validation();
             Console.WriteLine("Enter your Firstname");
             string firstName = Console.ReadLine();
-            Console.WriteLine(validation.FirstName_Validation(firstName));
+            Console.WriteLine(validation.Name_Validation(firstName));
             Console.WriteLine("Enter your Lastname");
             string lastName = Console.ReadLine();
-            Console.WriteLine(validation.FirstName_Validation(lastName));
+            Console.WriteLine(validation.Name_Validation(lastName));
             Console.WriteLine("Enter your Mobilenumber");
             string number = Console.ReadLine();
             Console.WriteLine(validation.Number_Validation(number));

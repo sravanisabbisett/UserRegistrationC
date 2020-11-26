@@ -18,7 +18,8 @@ namespace UserRegistration
         /// <param name="name">The name.</param>
         /// <returns></returns>
 
-        public bool FirstName_Validation(string name)
+        
+        public bool Name_Validation(string name)
         {
             if (Regex.IsMatch(name, NAME_PATTERN))
                return true;
