@@ -9,7 +9,13 @@ namespace UserRegistration
     {
         public const string NAME_PATTERN = "^[A-Z]{1}[a-z]{2,}$";
         public const string MOBILENUMBER_PATTERN = "^[0-9]{2}\\s[6-9]{1}[0-9]{9}$";
-
+        public const string EMAIL_PATTERN= "^[a-zA-Z0-9+_-]+(?:\\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9]+(?:\\.[a-zA-Z]{2,}){1,2}$";
+        
+        /// <summary>
+        /// validates the user firstname and  lastname
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public bool FirstName_Validation(string name)
         {
             if (Regex.IsMatch(name, NAME_PATTERN))
@@ -17,9 +23,26 @@ namespace UserRegistration
             return false;
         }
 
+        /// <summary>
+        /// validates the user mobilenumber
+        /// </summary>
+        /// <param name="number">The number.</param>
+        /// <returns></returns>
         public bool Number_Validation(string number)
         {
             if (Regex.IsMatch(number, MOBILENUMBER_PATTERN))
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// validates the user emailId
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <returns></returns>
+        public bool Email_validation(string email)
+        {
+            if (Regex.IsMatch(email, EMAIL_PATTERN))
                 return true;
             return false;
         }
