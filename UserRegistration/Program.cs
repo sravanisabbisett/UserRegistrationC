@@ -8,21 +8,43 @@ namespace UserRegistration
         {
             Console.WriteLine("Welcome to user Registration problem");
             Validation validation = new Validation();
-            Console.WriteLine("Enter your Firstname");
-            string firstName = Console.ReadLine();
-            Console.WriteLine(validation.Name_Validation(firstName));
-            Console.WriteLine("Enter your Lastname");
-            string lastName = Console.ReadLine();
-            Console.WriteLine(validation.Name_Validation(lastName));
-            Console.WriteLine("Enter your Mobilenumber");
-            string number = Console.ReadLine();
-            Console.WriteLine(validation.Number_Validation(number));
-            Console.WriteLine("Enter your email");
-            string email = Console.ReadLine();
-            Console.WriteLine(validation.Email_validation(email));
-            Console.WriteLine("Enter your password");
-            string password = Console.ReadLine();
-            Console.WriteLine(validation.Password_Validation(password));
+            bool FirstNameresult, LastNameResult, NumberResult, EmailResult, PasswordResult;
+            FirstNameresult = LastNameResult = NumberResult = EmailResult = PasswordResult = false;
+            while (!FirstNameresult)
+            {
+                Console.WriteLine("Enter your Firstname");
+                string firstName = Console.ReadLine();
+                bool FirstNmaeValidation = validation.Name_Validation(firstName);
+                FirstNameresult = FirstNmaeValidation;
+            }
+            while (!LastNameResult)
+            { 
+                Console.WriteLine("Enter your Lastname");
+                string lastName = Console.ReadLine();
+                bool LastNameValidation=validation.Name_Validation(lastName);
+                LastNameResult = LastNameValidation;
+            }
+            while (!NumberResult)
+            {
+                Console.WriteLine("Enter your Mobilenumber");
+                string number = Console.ReadLine();
+                bool NumberValidation=validation.Number_Validation(number);
+                NumberResult = NumberValidation;
+            }
+            while (!EmailResult)
+            {
+                Console.WriteLine("Enter your email");
+                string email = Console.ReadLine();
+                bool EmailValidation=validation.Email_validation(email);
+                EmailResult = EmailValidation;
+            }
+            while (!PasswordResult)
+            {
+                Console.WriteLine("Enter your password");
+                string password = Console.ReadLine();
+                bool PasswordValidation=validation.Password_Validation(password);
+                PasswordResult = PasswordValidation;
+            }
             Console.ReadKey();
         }
     }

@@ -112,7 +112,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation(" ");
+                bool result = validation.Name_Validation("");
             }
             catch (UserRegistrationException userException)
             {
@@ -219,7 +219,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation(" ");
+                bool result = validation.Name_Validation("");
             }
             catch (UserRegistrationException userException)
             {
@@ -296,8 +296,14 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenMobileNumber_WithStartingLessThanNumeric6_ShouldReturnFalse()
         {
-            bool result = validation.Number_Validation("91 5712443377");
-            Assert.IsFalse(result);
+            try
+            {
+                bool result = validation.Number_Validation("91 5712443377");
+            }
+            catch (UserRegistrationException userException)
+            {
+                Assert.AreEqual("Mobile Number starts with greater than 6", userException.Message);
+            }
         }
 
         /// <summary>
@@ -309,7 +315,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation(" ");
+                bool result = validation.Number_Validation("");
             }
             catch (UserRegistrationException userException)
             {
@@ -477,7 +483,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation(" ");
+                bool result = validation.Password_Validation("");
             }
             catch (UserRegistrationException userException)
             {
@@ -541,7 +547,7 @@ namespace UserregistratinTest
             [DataRow("abc.@gmail.com")]
             [DataRow("abc@gmail.com.1a")]
             [DataRow("abc@gmail.com.aa.au")]
-            [DataRow(" ")]
+            [DataRow("")]
         public void GivenEmail_InValidMultiple_ShouldReturnAsPerFalse(string email)
         {
             bool result = validation.Email_validation(email);

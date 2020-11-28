@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,6 @@ namespace UserRegistration
             {
                 if (result == false)
                 {
-                    
                     if (name.Length < 3)
                         throw new UserRegistrationException("Name cantains atleast 3 characters", 
                                                                 UserRegistrationException.ExceptionType.USER_ENTERED_LESSTHAN_MINUMUM_LENGTH);
@@ -47,10 +47,10 @@ namespace UserRegistration
                                                                 UserRegistrationException.ExceptionType.USER_ENTERED_SPECIAL_CHARACTER);
                 }
             }
-            /*catch (StackOverflowException userException)
+            catch(StackOverflowException Excetion)
             {
-                Console.WriteLine(userException.Message);
-            }*/
+                Console.WriteLine(Excetion.Message);
+            }
             catch (UserRegistrationException exception)
             {
                 Console.WriteLine(exception.Message);
@@ -67,6 +67,12 @@ namespace UserRegistration
         public bool Number_Validation(string number)
         {
             bool result = Regex.IsMatch(number, MOBILENUMBER_PATTERN);
+            double indexOfNumber = 0.0;
+            char[] resul = number.ToCharArray();
+            if (number.Length>0)
+            {
+                indexOfNumber = char.GetNumericValue(resul[3]);
+            }
             try
             {
                 if (number.Length == 10)
@@ -84,17 +90,18 @@ namespace UserRegistration
                 if (number.Any(char.IsLetter))
                     throw new UserRegistrationException("Alphabets not allowed in mobilenumber", 
                                                             UserRegistrationException.ExceptionType.USER_ENTERED_ALPHABET);
+                if (indexOfNumber < 6)
+                    throw new UserRegistrationException("Mobile Number starts with greater than 6",
+                                                             UserRegistrationException.ExceptionType.INVALID_NUMBER);
                 if (number.Any(char.IsLetterOrDigit))
                     throw new UserRegistrationException("Special characters not allowed in mobile number",
                                                             UserRegistrationException.ExceptionType.USER_ENTERED_SPECIAL_CHARACTER);
-                /*if (number.IndexOf[4])
-                    throw new UserRegistrationException("Mobile Number starts with greater than 6", 
-                                                            UserRegistrationException.ExceptionType.INVALID_NUMBER);*/
             }
             catch (UserRegistrationException userException)
             {
                 Console.WriteLine(userException.Message);
             }
+            
             return result;
         }
 
