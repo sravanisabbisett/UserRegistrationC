@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using UserRegistration;
 
 namespace UserregistratinTest
@@ -50,7 +51,9 @@ namespace UserregistratinTest
             {
                 Assert.AreEqual("Name cantains atleast 3 characters", userException.Message);
             }
+
         }
+
 
         /// <summary>
         /// Givens the first name with numeric should return false.
@@ -349,7 +352,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("91 @123456789");
+                bool result = validation.Number_Validation("91 61234567@89");
             }
             catch (UserRegistrationException userException)
             {
@@ -553,5 +556,205 @@ namespace UserregistratinTest
             bool result = validation.Email_validation(email);
             Assert.IsFalse(result);
         }
+
+
+        [TestMethod]
+        public void GivenFirstName_WithLessThanMinLength1_shouldReturnFalse()
+        {
+            //var exceptionMessage;
+            try
+            {
+                var exceptionMessage = Assert.ThrowsException<UserRegistrationException>(
+                             () => validation.Name_Validation("Sr"));
+            }
+            catch (UserRegistrationException userException)
+            {
+
+                //Assert.That.("Name cantains atleast 3 characters", exceptionMessage.Message);
+                Assert.AreEqual("Name cantains atleast 3 characters", userException.Message);
+            }
+        }
+        [TestMethod]
+        public void Given_ProperFieldName_InputParameter_And_MethodName_For_ValidatingFirstName_Should_Return_true()
+        {
+            ///Arrange
+            string name = "Sravani";
+            string fieldName = "name";
+            string methodName = "Name_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(true, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_InputParameter_And_MethodName_For_ValidatingLastName_Should_Return_true()
+        {
+            ///Arrange
+            string name = "Sabbisetti";
+            string fieldName = "name";
+            string methodName = "Name_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(true, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingMobileNumber_Should_Return_true()
+        {
+            ///Arrange
+            string name = "91 7732063720";
+            string fieldName = "number";
+            string methodName = "Number_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(true, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingPassword_Should_Return_true()
+        {
+            ///Arrange
+            string name = "Shanu12@";
+            string fieldName = "password";
+            string methodName = "Password_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(true, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_true()
+        {
+            ///Arrange
+            string name = "sravani.sabbisetti1@gmail.com";
+            string fieldName = "email";
+            string methodName = "Email_validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(true, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingFirstName_Should_Return_false()
+        {
+            ///Arrange
+            string name = "sravani";
+            string fieldName = "name";
+            string methodName = "Name_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(false, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingLastName_Should_Return_false()
+        {
+            ///Arrange
+            string name = "sravani";
+            string fieldName = "name";
+            string methodName = "Name_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(false, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingMobilenumber_Should_Return_false()
+        {
+            ///Arrange
+            string name = "918712443377";
+            string fieldName = "number";
+            string methodName = "Number_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(false, actual);
+        }
+
+
+        [TestMethod]
+        public void Given_ProperFieldName_ImproperProper_InputParameter_And_MethodName_For_ValidatingPassword_Should_Return_False()
+        {
+            ///Arrange
+            string name = "shanu12@";
+            string fieldName = "password";
+            string methodName = "Password_Validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(false, actual);
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_ImproperProper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
+        {
+            ///Arrange
+            string name = "sravni@.gmail.com";
+            string fieldName = "email";
+            string methodName = "Email_validation";
+            /// Act
+            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+
+            /// Assert
+            Assert.AreEqual(false, actual);
+        }
+
+        [TestMethod]
+        public void Given_Improper_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
+        {
+            try
+            {
+                ///Arrange
+                string name = "sravni@gmail.com";
+                string fieldName = "emaill";
+                string methodName = "Email_validation";
+                /// Act
+                object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+            }
+            catch (UserRegistrationException exception)
+            {
+                ///Assert
+                Assert.AreEqual("No such Field found", exception.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Given_ProperFieldName_Null_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
+        {
+            try
+            {
+                ///Arrange
+                string name = null;
+                string fieldName = "email";
+                string methodName = "Email_validation";
+                /// Act
+                object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
+            }
+            catch (UserRegistrationException exception)
+            {
+                ///Assert
+                Assert.AreEqual("Input parameter should not be NULL", exception.Message);
+            }
+        }
+
     }
+
 }
+
+
