@@ -574,6 +574,12 @@ namespace UserregistratinTest
                 Assert.AreEqual("Name cantains atleast 3 characters", userException.Message);
             }
         }
+
+        /// <summary>
+        /// Givens the proper field name input parameter and method name for validating first name should return true.
+        /// used reflection to get the field name and method name
+        /// </summary>
+        
         [TestMethod]
         public void Given_ProperFieldName_InputParameter_And_MethodName_For_ValidatingFirstName_Should_Return_true()
         {
@@ -588,6 +594,10 @@ namespace UserregistratinTest
             Assert.AreEqual(true, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name input parameter and method name for validating last name should return true.
+        /// </summary>
+        
         [TestMethod]
         public void Given_ProperFieldName_InputParameter_And_MethodName_For_ValidatingLastName_Should_Return_true()
         {
@@ -602,6 +612,10 @@ namespace UserregistratinTest
             Assert.AreEqual(true, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name proper input parameter and method name for validating mobile number should return true.
+        /// </summary>
+        
         [TestMethod]
         public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingMobileNumber_Should_Return_true()
         {
@@ -616,6 +630,10 @@ namespace UserregistratinTest
             Assert.AreEqual(true, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name proper input parameter and method name for validating password should return true.
+        /// </summary>
+        
         [TestMethod]
         public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingPassword_Should_Return_true()
         {
@@ -629,6 +647,10 @@ namespace UserregistratinTest
             /// Assert
             Assert.AreEqual(true, actual);
         }
+
+        /// <summary>
+        /// Givens the proper field name proper input parameter and method name for validating email should return true.
+        /// </summary>
 
         [TestMethod]
         public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_true()
@@ -644,6 +666,10 @@ namespace UserregistratinTest
             Assert.AreEqual(true, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name improper input parameter and method name for validating first name should return false.
+        /// </summary>
+
         [TestMethod]
         public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingFirstName_Should_Return_false()
         {
@@ -657,6 +683,10 @@ namespace UserregistratinTest
             /// Assert
             Assert.AreEqual(false, actual);
         }
+
+        /// <summary>
+        /// Givens the proper field name improper input parameter and method name for validating last name should return false.
+        /// </summary>
 
         [TestMethod]
         public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingLastName_Should_Return_false()
@@ -672,6 +702,10 @@ namespace UserregistratinTest
             Assert.AreEqual(false, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name improper input parameter and method name for validating mobilenumber should return false.
+        /// </summary>
+
         [TestMethod]
         public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingMobilenumber_Should_Return_false()
         {
@@ -686,6 +720,9 @@ namespace UserregistratinTest
             Assert.AreEqual(false, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name improper proper input parameter and method name for validating password should return false.
+        /// </summary>
 
         [TestMethod]
         public void Given_ProperFieldName_ImproperProper_InputParameter_And_MethodName_For_ValidatingPassword_Should_Return_False()
@@ -701,6 +738,10 @@ namespace UserregistratinTest
             Assert.AreEqual(false, actual);
         }
 
+        /// <summary>
+        /// Givens the proper field name improper proper input parameter and method name for validating email should return false.
+        /// </summary>
+
         [TestMethod]
         public void Given_ProperFieldName_ImproperProper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
         {
@@ -714,6 +755,10 @@ namespace UserregistratinTest
             /// Assert
             Assert.AreEqual(false, actual);
         }
+
+        /// <summary>
+        /// Givens the improper proper field name proper input parameter and method name for validating email should return false.
+        /// </summary>
 
         [TestMethod]
         public void Given_Improper_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
@@ -733,6 +778,10 @@ namespace UserregistratinTest
                 Assert.AreEqual("No such Field found", exception.Message);
             }
         }
+
+        /// <summary>
+        /// Givens the proper field name null input parameter and method name for validating email should return false.
+        /// </summary>
 
         [TestMethod]
         public void Given_ProperFieldName_Null_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
