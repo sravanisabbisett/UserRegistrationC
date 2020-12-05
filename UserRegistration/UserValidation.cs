@@ -6,11 +6,11 @@ using System.Text;
 
 namespace UserRegistration
 {
-    class UserValidationTest
+    class UserValidation
     {
         public void Display(string firstName,string lastName, string number, string email, string password)
         {
-            Console.WriteLine("Employee class validation");
+            
             UserDetails userDetails = new UserDetails();
 
             userDetails.Name = firstName;

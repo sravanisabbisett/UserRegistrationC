@@ -7,9 +7,11 @@ namespace UserRegistration
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to user Registration problem");
-            UserValidationTest userValidation = new UserValidationTest();
+            UserValidation userValidation = new UserValidation();
             userValidation.Display("Sravani","Sabbisetti","91 8712443377","sravani@gmail.com","Shanu12@");
-            userValidation.Display("Sr", "Sa", "8712443377", "sravani@.gmail.com", "shanu12");
+            Console.WriteLine("------------------------------------------------------------");
+            Console.WriteLine("Checking for invalid details");
+            userValidation.Display("sra", "Sa", "8712443377", "sravani@.gmail.com", "shanu12");
             Console.ReadKey();
         }
     }

@@ -1,30 +1,25 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using UserRegistration;
 
-namespace UserregistratinTest
+namespace UserRegistrationLambda
 {
     [TestClass]
     public class UnitTest1
     {
-        private Validation validation;
+        LambdaValidation validation;
 
         public UnitTest1()
         {
-            validation = new Validation();
+             validation = new LambdaValidation();
         }
 
-        /// <summary>
-        /// Givens the first name with valid should return true.
-        /// </summary>
         [TestMethod]
-
         public void GivenFirstName_WithValid_shouldReturnTrue()
         {
-            bool result=validation.Name_Validation("Sravani");
+            bool result = validation.LambdaValidationName("Sravani");
             Assert.IsTrue(result);
         }
-        
+
         /// <summary>
         /// Givens the first name with minimum length should return true.
         /// </summary>
@@ -32,7 +27,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenFirstName_WithMinLength_shouldReturnTrue()
         {
-            bool result = validation.Name_Validation("Sra");
+            bool result = validation.LambdaValidationName("Sra");
             Assert.IsTrue(result);
         }
 
@@ -45,13 +40,12 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("Sr");
+                bool result = validation.LambdaValidationName("Sr");
             }
             catch (UserRegistrationException userException)
             {
                 Assert.AreEqual("Name cantains atleast 3 characters", userException.Message);
             }
-
         }
 
 
@@ -64,7 +58,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("Sravani2");
+                bool result = validation.LambdaValidationName("Sravani2");
             }
             catch (UserRegistrationException userException)
             {
@@ -81,7 +75,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("Sravani@");
+                bool result = validation.LambdaValidationName("Sravani@");
             }
             catch (UserRegistrationException userException)
             {
@@ -98,7 +92,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("sravani");
+                bool result = validation.LambdaValidationName("sravani");
             }
             catch (UserRegistrationException userException)
             {
@@ -115,8 +109,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("");
-                
+                bool result = validation.LambdaValidationName("");
             }
             catch (UserRegistrationException userException)
             {
@@ -131,7 +124,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenLastName_WithValid_shouldReturnTrue()
         {
-            bool result = validation.Name_Validation("Sabbisetti");
+            bool result = validation.LambdaValidationName("Sabbisetti");
             Assert.IsTrue(result);
         }
 
@@ -142,7 +135,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenLastName_WithMinLength_shouldReturnTrue()
         {
-            bool result = validation.Name_Validation("Sab");
+            bool result = validation.LambdaValidationName("Sab");
             Assert.IsTrue(result);
         }
 
@@ -155,7 +148,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("Sa");
+                bool result = validation.LambdaValidationName("Sa");
             }
             catch (UserRegistrationException userException)
             {
@@ -172,7 +165,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("Sabbisetti1");
+                bool result = validation.LambdaValidationName("Sabbisetti1");
             }
             catch (UserRegistrationException userException)
             {
@@ -189,7 +182,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("Sabbisetti@");
+                bool result = validation.LambdaValidationName("Sabbisetti@");
             }
             catch (UserRegistrationException userException)
             {
@@ -206,7 +199,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("sabbisetti");
+                bool result = validation.LambdaValidationName("sabbisetti");
             }
             catch (UserRegistrationException userException)
             {
@@ -223,7 +216,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Name_Validation("");
+                bool result = validation.LambdaValidationName("");
             }
             catch (UserRegistrationException userException)
             {
@@ -238,7 +231,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenMobileNumber_WithProper_ShouldReturnFalse()
         {
-            bool result = validation.Number_Validation("91 8712443377");
+            bool result = validation.LambdaNumberValidation("91 8712443377");
             Assert.IsTrue(result);
         }
 
@@ -251,7 +244,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("8712443377");
+                bool result = validation.LambdaNumberValidation("8712443377");
             }
             catch (UserRegistrationException userException)
             {
@@ -268,7 +261,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("918712443377");
+                bool result = validation.LambdaNumberValidation("918712443377");
             }
             catch (UserRegistrationException userException)
             {
@@ -285,11 +278,11 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("91 871244337");
+                bool result = validation.LambdaNumberValidation("91 871244337");
             }
             catch (UserRegistrationException userException)
             {
-                Assert.AreEqual("Mobile Number should be exactly 10 numerics",userException.Message);
+                Assert.AreEqual("Mobile Number should be exactly 10 numerics", userException.Message);
             }
         }
 
@@ -302,7 +295,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("91 5712443377");
+                bool result = validation.LambdaNumberValidation("91 5712443377");
             }
             catch (UserRegistrationException userException)
             {
@@ -313,13 +306,13 @@ namespace UserregistratinTest
         /// <summary>
         /// Givens the mobile number with empty should return false.
         /// </summary>
-        
+
         [TestMethod]
         public void GivenMobileNumber_WithEmpty_ShouldReturnFalse()
         {
             try
             {
-                bool result = validation.Number_Validation("");
+                bool result = validation.LambdaNumberValidation("");
             }
             catch (UserRegistrationException userException)
             {
@@ -336,7 +329,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("91 a871244337");
+                bool result = validation.LambdaNumberValidation("91 a871244337");
             }
             catch (UserRegistrationException userException)
             {
@@ -353,7 +346,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Number_Validation("91 61234567@89");
+                bool result = validation.LambdaNumberValidation("91 61234567@89");
             }
             catch (UserRegistrationException userException)
             {
@@ -368,7 +361,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenPassword_WithValid_ShouldReturnTrue()
         {
-            bool result = validation.Password_Validation("Shanu12@");
+            bool result = validation.LambdaPasswordValidation("Shanu12@");
             Assert.IsTrue(result);
         }
 
@@ -379,7 +372,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenPassword_WithStartingLowerCase_ShouldReturnTrue()
         {
-            bool result = validation.Password_Validation("shanU12@");
+            bool result = validation.LambdaPasswordValidation("shanU12@");
             Assert.IsTrue(result);
         }
 
@@ -390,7 +383,7 @@ namespace UserregistratinTest
         [TestMethod]
         public void GivenPassword_WithStartingNumeric_ShouldReturnTrue()
         {
-            bool result = validation.Password_Validation("1Shanu1@");
+            bool result = validation.LambdaPasswordValidation("1Shanu1@");
             Assert.IsTrue(result);
         }
 
@@ -403,9 +396,10 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("Shanu1@");
+                bool result = validation.LambdaPasswordValidation("Shanu1@");
             }
-            catch (UserRegistrationException userException){
+            catch (UserRegistrationException userException)
+            {
                 Assert.AreEqual("password must contains minum 8 characters", userException.Message);
             }
         }
@@ -419,7 +413,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("shanu12@");
+                bool result = validation.LambdaPasswordValidation("shanu12@");
             }
             catch (UserRegistrationException userException)
             {
@@ -436,11 +430,11 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("SHANU12@");
+                bool result = validation.LambdaPasswordValidation("SHANU12@");
             }
             catch (UserRegistrationException userException)
             {
-                Assert.AreEqual("password should contain alleast one lowercase",userException.Message);
+                Assert.AreEqual("password should contain alleast one lowercase", userException.Message);
             }
         }
 
@@ -453,7 +447,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("Sravani@");
+                bool result = validation.LambdaPasswordValidation("Sravani@");
             }
             catch (UserRegistrationException userException)
             {
@@ -470,7 +464,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("Shanu123");
+                bool result = validation.LambdaPasswordValidation("Shanu123");
             }
             catch (UserRegistrationException userException)
             {
@@ -487,11 +481,11 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("");
+                bool result = validation.LambdaPasswordValidation("");
             }
             catch (UserRegistrationException userException)
             {
-                Assert.AreEqual("password should not be empty",userException.Message);
+                Assert.AreEqual("password should not be empty", userException.Message);
             }
         }
 
@@ -504,7 +498,7 @@ namespace UserregistratinTest
         {
             try
             {
-                bool result = validation.Password_Validation("Shanu 12@");
+                bool result = validation.LambdaPasswordValidation("Shanu 12@");
             }
             catch (UserRegistrationException userException)
             {
@@ -518,18 +512,18 @@ namespace UserregistratinTest
         /// <param name="email">The email.</param>
 
         [TestMethod]
-            [DataRow("abc@yahoo.com")]
-            [DataRow("abc-100@yahoo.com")]
-            [DataRow("abc.100@yahoo.com")]
-            [DataRow("abc111@abc.com")]
-            [DataRow("abc-100@abc.net")]
-            [DataRow("abc.100@abc.com.au")]
-            [DataRow("abc@1.com")]
-            [DataRow("abc@gmail.com.com")]
-            [DataRow("abc+100@gmail.com")]
+        [DataRow("abc@yahoo.com")]
+        [DataRow("abc-100@yahoo.com")]
+        [DataRow("abc.100@yahoo.com")]
+        [DataRow("abc111@abc.com")]
+        [DataRow("abc-100@abc.net")]
+        [DataRow("abc.100@abc.com.au")]
+        [DataRow("abc@1.com")]
+        [DataRow("abc@gmail.com.com")]
+        [DataRow("abc+100@gmail.com")]
         public void GivenEmail_ValidInMultiple_ShouldReturnAsPerTrue(string email)
         {
-            bool result = validation.Email_validation(email);
+            bool result = validation.EmailValidation(email);
             Assert.IsTrue(result);
         }
 
@@ -539,272 +533,23 @@ namespace UserregistratinTest
         /// <param name="email">The email.</param>
 
         [TestMethod]
-            [DataRow("abc.com")]
-            [DataRow("abc@.com.my")]
-            [DataRow("abc123@gmail.a")]
-            [DataRow("abc123@.com")]
-            [DataRow("abc123@.com.com")]
-            [DataRow(".abc@abc.com")]
-            [DataRow("abc@%*.com")]
-            [DataRow("abc()*@gmail.com")]
-            [DataRow("abc..2002@gmail.com")]
-            [DataRow("abc.@gmail.com")]
-            [DataRow("abc@gmail.com.1a")]
-            [DataRow("abc@gmail.com.aa.au")]
-            [DataRow("")]
+        [DataRow("abc.com")]
+        [DataRow("abc@.com.my")]
+        [DataRow("abc123@gmail.a")]
+        [DataRow("abc123@.com")]
+        [DataRow("abc123@.com.com")]
+        [DataRow(".abc@abc.com")]
+        [DataRow("abc@%*.com")]
+        [DataRow("abc()*@gmail.com")]
+        [DataRow("abc..2002@gmail.com")]
+        [DataRow("abc.@gmail.com")]
+        [DataRow("abc@gmail.com.1a")]
+        [DataRow("abc@gmail.com.aa.au")]
+        [DataRow("")]
         public void GivenEmail_InValidMultiple_ShouldReturnAsPerFalse(string email)
         {
-            bool result = validation.Email_validation(email);
+            bool result = validation.EmailValidation(email);
             Assert.IsFalse(result);
         }
-
-
-        [TestMethod]
-        public void GivenFirstName_WithLessThanMinLength1_shouldReturnFalse()
-        {
-            //var exceptionMessage;
-            try
-            {
-                var exceptionMessage = Assert.ThrowsException<UserRegistrationException>(
-                             () => validation.Name_Validation("Sr"));
-            }
-            catch (UserRegistrationException userException)
-            {
-
-                //Assert.That.("Name cantains atleast 3 characters", exceptionMessage.Message);
-                Assert.AreEqual("Name cantains atleast 3 characters", userException.Message);
-            }
-        }
-
-        /// <summary>
-        /// Givens the proper field name input parameter and method name for validating first name should return true.
-        /// used reflection to get the field name and method name
-        /// </summary>
-        
-        [TestMethod]
-        public void Given_ProperFieldName_InputParameter_And_MethodName_For_ValidatingFirstName_Should_Return_true()
-        {
-            ///Arrange
-            string name = "Sravani";
-            string fieldName = "name";
-            string methodName = "Name_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(true, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name input parameter and method name for validating last name should return true.
-        /// </summary>
-        
-        [TestMethod]
-        public void Given_ProperFieldName_InputParameter_And_MethodName_For_ValidatingLastName_Should_Return_true()
-        {
-            ///Arrange
-            string name = "Sabbisetti";
-            string fieldName = "name";
-            string methodName = "Name_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(true, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name proper input parameter and method name for validating mobile number should return true.
-        /// </summary>
-        
-        [TestMethod]
-        public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingMobileNumber_Should_Return_true()
-        {
-            ///Arrange
-            string name = "91 7732063720";
-            string fieldName = "number";
-            string methodName = "Number_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(true, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name proper input parameter and method name for validating password should return true.
-        /// </summary>
-        
-        [TestMethod]
-        public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingPassword_Should_Return_true()
-        {
-            ///Arrange
-            string name = "Shanu12@";
-            string fieldName = "password";
-            string methodName = "Password_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(true, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name proper input parameter and method name for validating email should return true.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_true()
-        {
-            ///Arrange
-            string name = "sravani.sabbisetti1@gmail.com";
-            string fieldName = "email";
-            string methodName = "Email_validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(true, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name improper input parameter and method name for validating first name should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingFirstName_Should_Return_false()
-        {
-            ///Arrange
-            string name = "sravani";
-            string fieldName = "name";
-            string methodName = "Name_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(false, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name improper input parameter and method name for validating last name should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingLastName_Should_Return_false()
-        {
-            ///Arrange
-            string name = "sravani";
-            string fieldName = "name";
-            string methodName = "Name_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(false, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name improper input parameter and method name for validating mobilenumber should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_Improper_InputParameter_And_MethodName_For_ValidatingMobilenumber_Should_Return_false()
-        {
-            ///Arrange
-            string name = "918712443377";
-            string fieldName = "number";
-            string methodName = "Number_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(false, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name improper proper input parameter and method name for validating password should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_ImproperProper_InputParameter_And_MethodName_For_ValidatingPassword_Should_Return_False()
-        {
-            ///Arrange
-            string name = "shanu12@";
-            string fieldName = "password";
-            string methodName = "Password_Validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(false, actual);
-        }
-
-        /// <summary>
-        /// Givens the proper field name improper proper input parameter and method name for validating email should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_ImproperProper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
-        {
-            ///Arrange
-            string name = "sravni@.gmail.com";
-            string fieldName = "email";
-            string methodName = "Email_validation";
-            /// Act
-            object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-
-            /// Assert
-            Assert.AreEqual(false, actual);
-        }
-
-        /// <summary>
-        /// Givens the improper proper field name proper input parameter and method name for validating email should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_Improper_ProperFieldName_Proper_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
-        {
-            try
-            {
-                ///Arrange
-                string name = "sravni@gmail.com";
-                string fieldName = "emaill";
-                string methodName = "Email_validation";
-                /// Act
-                object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-            }
-            catch (UserRegistrationException exception)
-            {
-                ///Assert
-                Assert.AreEqual("No such Field found", exception.Message);
-            }
-        }
-
-        /// <summary>
-        /// Givens the proper field name null input parameter and method name for validating email should return false.
-        /// </summary>
-
-        [TestMethod]
-        public void Given_ProperFieldName_Null_InputParameter_And_MethodName_For_ValidatingEmail_Should_Return_False()
-        {
-            try
-            {
-                ///Arrange
-                string name = null;
-                string fieldName = "email";
-                string methodName = "Email_validation";
-                /// Act
-                object actual = UserRegistrationReflection.SetFieldValue(name, fieldName, methodName);
-            }
-            catch (UserRegistrationException exception)
-            {
-                ///Assert
-                Assert.AreEqual("Input parameter should not be NULL", exception.Message);
-            }
-        }
-
     }
-
 }
-
-
